@@ -1,0 +1,76 @@
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+    <div class="col-12 col-lg-6">
+      <img src="/img/sneakers.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Sneaker Collection">
+    </div>
+  
+    <div class="col-12 col-lg-6">
+      <h1 class="display-5 fw-bold mb-3">Sneaker Collection</h1>
+      <p class="lead">
+        Explore our huge selection of sneakers from all your favourite brands. Find the sneaker you love and show off your collection by adding or deleting them!
+      </p>
+  
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="/add-sneaker" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Add Sneaker</a>
+      </div>
+  
+    </div>
+
+<!--Brands--> 
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>My Brands</h2>
+  </div>
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+    <% if(brands != '') { %>
+      <% brands.forEach(function(brand, index) { %>
+        <a href="/brands/<%= brand.name %>" class="col text-center brand__link">
+          <div class="brand__img shadow">
+            <img src= "/img/<%- brand.image %>" alt="<%- brand.name %>" loading="lazy">
+         </div>
+         <div class="pt-1"><%- brand.name %></div>
+        </a>
+        <% }) %>
+    <% } %>
+
+</div>
+
+
+<!-- My Collection Section-->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+      <h2>My Collection</h2>
+    </div>
+  
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+      <% if(sneakers != '') { %>
+        <% sneakers.latest.forEach(function(shoes, index) { %> 
+
+      <a href="/collection/<%= shoes._id%>" class="col text-center brand__link">
+        <div class="brand__img brand__img--large shadow">
+          <img src= "/uploads/<%= shoes.image %>" alt="<%= shoes.name %>" loading="lazy">
+       </div>
+       <div class="pt-1"><%= shoes.name %></div>
+      </a>
+      <% }) %>
+    <% } %>
+
+    </div>
+  
+</section>
+
+<!-- Submit Section-->
+
+<section class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Add To Your Collection</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Show off your latest sneaker!</p>
+      <img src="/img/collection.jpeg" class="d-block mx-auto mb-4 img-fluid" alt="Add you sneaker" width="300" height="125" loading="lazy">
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="/add-sneaker" class="btn btn-primary btn-dark btn-lg">Add Sneaker</a>
+      </div>
+    </div>
+  </section>

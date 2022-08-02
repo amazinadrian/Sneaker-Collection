@@ -1,0 +1,35 @@
+<h1 class="pb-4">Brands</h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/brands">Brands</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Explore Brands</li>
+    </ol>
+  </nav>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+    <% if(typeof brands !== 'undefined' && brands.length > 0) { %>
+        <% brands.forEach(function(brand, index) { %>
+        <a href="brands/<%= brand.name %>" class="col text-center brand__link">
+            <div class="brand__img brand__img--large shadow">
+            <img src= "/img/<%- brand.image %>" alt="<%- brand.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%- brand.name %></div>
+        </a>
+        <% }) %>
+    <% } %>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <% if(typeof brandById !== 'undefined' && brandById.length > 0) { %>
+    <% brandById.forEach(function(collection, index){ %>
+    <a href="/collection/<%= collection._id %>" class="col text-center brand__link">
+      <div class="brand__img brand__img--large shadow">
+        <img src="/uploads/<%= collection.image %>" alt="<%= collection.name %>" loading="lazy">
+      </div>
+      <div class="pt-1"><%= collection.name %></div>
+    </a>
+    <% }) %>
+  <% } %>
+</div>

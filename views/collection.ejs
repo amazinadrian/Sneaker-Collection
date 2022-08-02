@@ -1,0 +1,32 @@
+<% if(collection != null ) { %>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%- collection.name %></li>
+        </ol>
+      </nav>
+    
+      <div class="row">
+
+        <div class="col-12 col-md-4">
+          <img src="/uploads/<%- collection.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- collection.name %>" loading="lazy">
+        </div>
+
+        <div class="col-12 col-md-8">
+            <div class="row">
+              <div class="col-12"><h1><%- collection.name %></h1></div>
+              <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- collection.brand %></div>
+              <div class="col-12" style="white-space: pre-line;">
+                <h4 class="price">Sneaker Value</h4>
+                <%- collection.price %>
+              </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="/collection" class="btn btn-primary btn-lg">Update</a>
+          <a href="/collection" class="btn btn-primary btn-dark btn-lg">Delete</a>
+        </div>
+
+<% } %>

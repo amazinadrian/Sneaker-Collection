@@ -1,0 +1,52 @@
+:root {
+    --bs-font-sans-serif: 'Rubik', sans-serif;
+  }
+  
+.container-xxl { 
+  max-width: 1530px; 
+}
+  
+body {
+    background-color: rgb(2, 2, 142);
+    background-image: url(https://www.freevector.com/uploads/vector/preview/30339/Abstract_Colorful_Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a { color: var(--bs-dark); }
+
+.brand__link {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: 250ms all;
+    margin-top: 50px;
+  }
+  
+  .brand__link:hover {
+    transform: scale(1.1);
+  }
+  
+  .brand__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    margin-bottom: 10px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .brand__img--large {
+    height: 250px;
+  }
+  
+  .brand__img img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+.price {
+  font-size: 25px;
+}
