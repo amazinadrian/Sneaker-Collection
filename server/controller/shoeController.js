@@ -109,7 +109,7 @@ exports.addShoesOnPost = async(req, res) => {
   }
 
   // Delete Shoes
- exports.deleteShoesById = (req,res) => {
+exports.deleteShoesById = (req,res) => {
     Shoes.findByIdAndDelete(req.params.id, (err) => {
         if(err) {
             res.status(400).json(err)
