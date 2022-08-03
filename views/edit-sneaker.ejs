@@ -1,0 +1,50 @@
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Edit Your Sneaker</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead">Edit your current sneaker. Fill our form to get started.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+
+
+  <div class="col-8">
+      <form action="/collection/<%= shoe._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
+          <div class="row g-3">
+              <div class="col-12">
+                  <label for="name" class="form-label">Sneaker Name</label>
+                  <input type="text" name="name" id="name" value="<%= shoe.name %>">
+                
+              </div>
+
+              <div class="col-12">
+                  <label for="price" class="form-label">Sneaker Value</label>
+                  <input type="text" name="price" id="price" value="<%= shoe.price %>">
+              </div>
+
+              <div class="col-12">
+                  <label for="brand">Select Brand</label>
+                  <select class="form-select form-control" name="brand" aria-label="Brand">
+                    <option>Select Brand</option>
+                    <option <%= shoe.brand === 'Nike' ? "selected" : null %> value='Nike'>Nike</option>
+                    <option <%= shoe.brand === 'Adidas' ? "selected" : null %> value='Adidas'>Adidas</option>
+                    <option <%= shoe.brand === 'Air Jordan' ? "selected" : null %> value='Air Jordan'>Air Jordan</option>
+                    <option <%= shoe.brand === 'Yeezy' ? "selected" : null %> value='Yeezy'>Yeezy</option>
+                    <option <%= shoe.brand === 'Converse' ? "selected" : null %> value='Converse'>Converse</option>
+                  </select>
+              </div>
+
+              <div class="col-12">
+                  <label for="image">Sneaker Image</label>
+                  <input type="file" class="form-control" name="image" accept="image/*" value="<%= shoe.image %>">
+              </div>
+
+              <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Submit Updated</button>
+              </div>
+        
+             
+          </div>
+      </form>
+  </div>
+</div> 

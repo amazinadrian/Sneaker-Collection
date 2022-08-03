@@ -112,7 +112,7 @@ exports.addShoesOnPost = async(req, res) => {
 exports.deleteShoesById = (req,res) => {
     Shoes.findByIdAndDelete(req.params.id, (err) => {
         if(err) {
-            res.status(400).json(err)
+            res.status(500).json(err)
             return
         }
         res.redirect('/')
@@ -120,17 +120,116 @@ exports.deleteShoesById = (req,res) => {
 }
 
 
-// Update Shoes
-// exports.updateShoes = async(req, res) => {
+// updateShoesById();
+exports.editShoes = async(req, res) => {
+  
+  try {
+    const shoeId = req.params.id;
+    const shoe = await Shoes.findById(shoeId);
+    res.render('edit-sneaker', { title: 'Sneakers - Edit Sneaker', shoe } );
+  } catch (error) {
+    res.satus(500).send({message: error.message || "Error Occured" });
+  }
+}
+
+exports.updateShoesOnPut = (req,res) => {
+  // get id from req.params
+  //find by Id and update in the DB 
+  // redirect to /collection/:id
+
+  const shoeId = req.params.id;
+
+  if(!req.files || Object.keys(req.files).length === 0){
+    console.log('No Files where uploaded.');
+    const shoe = Shoes.findById(shoeId);
+    req.body.image = shoe.image
+  } else {
+
+    imageUploadFile = req.files.image;
+    newImageName = Date.now() + imageUploadFile.name;
+
+    uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+
+    imageUploadFile.mv(uploadPath, function(err){
+      if(err) return res.satus(500).send(err);
+    })
+    req.body.image = newImageName;
+  }
+  Shoes.findByIdAndUpdate(shoeId, req.body, {new: true},( error, updatedShoe ) => {
+    if (error) {
+      res.send(error)
+    }
+    else {
+      res.redirect('/collection/' + updatedShoe._id)
+    }
+  })
+}
+
+  
+
+  // try {
+
+  //   let imageUploadFile;
+  //   let uploadPath;
+  //   let newImageName;
+
+  //   if(!req.files || Object.keys(req.files).length === 0){
+  //     console.log('No Files where uploaded.');
+  //   } else {
+
+  //     imageUploadFile = req.files.image;
+  //     newImageName = Date.now() + imageUploadFile.name;
+
+  //     uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+
+  //     imageUploadFile.mv(uploadPath, function(err){
+  //       if(err) return res.satus(500).send(err);
+  //     })
+
+  //   }
+
+  //   let updatedShoes = new Shoes({
+  //     name: req.body.name,
+  //     price: req.body.price,
+  //     brand: req.body.brand,
+  //     image: newImageName
+  //   });
+
+  //   await updatedShoes.save();
+
+  //   req.flash('infoSubmit', 'Sneaker has been updated.')
+  //   res.redirect('/collection/:id');
+
+  // } catch(error) {
+  //   req.flash('infoErrors', error);
+  //   res.redirect('/collection/:id/edit');
+  //   }
+  // }
+
+
+
+
+   
 //   try {
-//     const res = await Shoes.updateOne({ name: 'New Sneaker' }, { name: 'New Sneaker Updated' });
-//     res.n; // Number of documents matched
-//     res.nModified; // Number of documents modified
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// updateShoes();
+//     const shoeId = req.params.id;
+//     const updatedShoes = new Shoes({
+//       name: req.body.name,
+//       price: req.body.price,
+//       brand: req.body.brand,
+//       image: newImageName
+//     });
+
+//     await updatedShoes.save();
+
+//     req.flash('infoSubmit', 'Sneaker has been added.')
+//     res.redirect('/collection/:id');
+
+//   } catch(error) {
+//     req.flash('infoErrors', error);
+//     res.redirect('/collection/:id/edit');
+//  }
+
+
 
 // About Us
 exports.aboutUs = async(req, res) => {
