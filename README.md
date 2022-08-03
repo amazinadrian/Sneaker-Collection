@@ -14,10 +14,13 @@ An sneaker app where you can add all of your favorite sneakers to your very own 
 
 # Screenshot
 
-![](/Stock-M%20copy/public/img/StockM1.png)
-![](/Stock-M%20copy/public/img/StockM2.png)
-![](/Stock-M%20copy/public/img/StockMMobile1.png)
-![](/Stock-M%20copy/public/img/StockMMobile2.png)
+![](img/StockM1.png)
+
+![](img/StockM2.png)
+
+![](img/StockMMobile1.png)
+
+![](img/StockMMobile2.png)
 
 
 # Getting Started
