@@ -20,13 +20,7 @@ An sneaker app where you can add all of your favorite sneakers to your very own 
 
 # Screenshot
 
-![](img/StockM1.png)
-
-![](img/StockM2.png)
-
-![](img/StockMMobile1.png)
-
-![](img/StockMMobile2.png)
+![Uploading Screen Shot 2022-07-30 at 9.51.10 PM.png…]()
 
 
 # Getting Started
