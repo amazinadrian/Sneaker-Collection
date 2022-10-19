@@ -162,7 +162,7 @@ exports.updateShoesOnPut = (req,res) => {
     else {
       res.redirect('/collection/' + updatedShoe._id)
     }
-  })
+  })cd 
 }
 
   

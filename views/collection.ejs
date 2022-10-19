@@ -9,7 +9,7 @@
     
       <div class="row">
 
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-sm-4">
           <img src="/uploads/<%= collection.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- collection.name %>" loading="lazy">
         </div>
 
@@ -29,7 +29,7 @@
             <input type="submit" value="Update" class="btn btn-primary btn-m">
           </form>
 
-          <!-- <!-- <form class="edit-form" action="/edit-sneaker/<%= collection._id %>?_method=UPDATE" method="PUT"> -->
+          <!-- <form class="edit-form" action="/edit-sneaker/<%= collection._id %>?_method=UPDATE" method="PUT"> -->
          
           <form class="delete-form" action="/collection/<%= collection._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete" class="btn btn-primary btn-dark btn-m">
